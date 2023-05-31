@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from "react";
+import "./App.css";
+import Additem from "./Components/Additem";
+import Display from "./Components/Display";
 
-function App() {
+ const  App= () =>{
+  const [product ,setproduct]=useState('')
+  const [Grandtotal, setGrandtotal]=useState(0);
+  const data=(newobj)=>{    
+        setproduct((prevproduct)=>[...prevproduct ,newobj]);
+  }
+ console.log(product)
+ const removeHandler = (id) => {
+  const updatedProduct = product.filter((item) => item.id !== id);
+  setproduct(updatedProduct); 
+  localStorage.removeItem(id)
+};
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <Additem data={data}></Additem>
+    <Display info={product} remove={removeHandler}></Display>
+    </>
   );
 }
 
