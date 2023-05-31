@@ -11,6 +11,7 @@ const Additem=(props)=>{
     localStorage.setItem(obj.id ,JSON.stringify(obj)); 
    
     props.data(obj);
+    event.target.reset();
     
    }
     return(

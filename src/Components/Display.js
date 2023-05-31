@@ -12,7 +12,7 @@ const Display = (props) => {
             <li key={data.id}>
               ID: {data.id} Name: {data.Product_Name} Selling Price:{" "}
               {data.selling_price}
-              <button onClick={() => props.remove(data.id)}>Delete</button>
+              <button onClick={() => props.remove(data.id,data.selling_price)}>Delete</button>
             </li>
           </ul>
         </>
